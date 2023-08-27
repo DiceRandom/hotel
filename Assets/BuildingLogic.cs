@@ -16,6 +16,8 @@ public class BuildingLogic : MonoBehaviour
     public List<Floor> floors = new List<Floor>();
     
     public List<FloorHandler> FDs = new List<FloorHandler>();
+
+    public bool debug = true;
     
 
     // Start is called before the first frame update
@@ -46,12 +48,18 @@ public class BuildingLogic : MonoBehaviour
 
 
     public void CreateNewFloor(int price){
-        CreateFloor(roomPrefab);
-        if(GetComponent<MoneyLogic>().money > price){
+        if(debug){
+            CreateFloor(roomPrefab);
+            Debug.Log("Debug Floor");
+            return;
+        }   
+        if(GetComponent<MoneyLogic>().money >= price){
             GetComponent<MoneyLogic>().money -= price;
+            CreateFloor(roomPrefab);
         }else{
             Debug.LogError("BROKE AF");
         }
+        GetComponent<MoneyLogic>().UpdateUI();
     }
 
 

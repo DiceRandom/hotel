@@ -26,6 +26,10 @@ public class MoneyLogic : MonoBehaviour
         
     }
 
+    public void UpdateUI(){
+        moneyUI.text = string.Format("MONEY: {0:C}", money);
+    }
+
     void Cashflow(){
         float income = 0;
         // BOOTY PERFORECE DONT DONT THIS FIIX LATER
