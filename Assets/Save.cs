@@ -52,7 +52,7 @@ public class Save : MonoBehaviour
         SaveIntoJson();
         while(timer <= autoSaveTime){
             autoSave.Rotate(0f, 0f, 0.5f, Space.Self);
-            timer += Time.deltaTime;
+            timer += Time.fixedDeltaTime;
             await Task.Yield();
         }
         
