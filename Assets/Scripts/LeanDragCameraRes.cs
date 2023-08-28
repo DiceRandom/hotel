@@ -140,8 +140,8 @@ namespace Lean.Touch
             // stop at ceiling
 
             if(bl.floors.Count >= 6){
-                if(newPosition.y > (bl.floors.Count*1.5)){
-                    newPosition.y = bl.floors.Count*1.5f;
+                if(newPosition.y > (bl.floors.Count*1.75)){
+                    newPosition.y = bl.floors.Count*1.75f;
                 }
             }else{
                 newPosition.y = 5;

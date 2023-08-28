@@ -15,3 +15,4 @@ MonoBehaviour:
   floorType: 1
   level: 0
   floorTexture: {fileID: 21300000, guid: aa1fe3fd95d58e54eb162ab71495e3a6, type: 3}
+  shaderTexture: {fileID: 21300000, guid: e8e0f234b4ccf9640869284ded917f7a, type: 3}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FloorInfo;
 using TMPro;
+using System;
 
 public class MoneyLogic : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class MoneyLogic : MonoBehaviour
     {
         bl = GetComponent<BuildingLogic>();
         InvokeRepeating("Cashflow", 1f, 1f);
+        UpdateUI();
     }
 
     // Update is called once per frame
@@ -27,7 +29,8 @@ public class MoneyLogic : MonoBehaviour
     }
 
     public void UpdateUI(){
-        moneyUI.text = string.Format("MONEY: {0:C}", money);
+        String formated = string.Format("{0:C}", money).Substring(1);
+        moneyUI.text = formated;
     }
 
     void Cashflow(){
@@ -42,7 +45,8 @@ public class MoneyLogic : MonoBehaviour
 
         money += income;
         Debug.Log("Money has gone up "+ income+"!");
-        moneyUI.text = string.Format("MONEY: {0:C}", money);
+        String formated = string.Format("{0:C}", money).Substring(1);
+        moneyUI.text = formated;
         // every floor generate 1 dollar a second;
 
 

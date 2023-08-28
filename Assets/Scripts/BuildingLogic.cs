@@ -11,7 +11,8 @@ public class BuildingLogic : MonoBehaviour
     public Floor lobbyPrefab;
     public Floor roomPrefab;
 
-    public GameObject LevelUpItem;
+    public GameObject StarBorder;
+    public GameObject TitleBorder;
 
     public List<Floor> floors = new List<Floor>();
     
@@ -74,6 +75,16 @@ public class BuildingLogic : MonoBehaviour
         // Set the texture
         newFloor.AddComponent<SpriteRenderer>().sprite = floorItem.floorTexture;
 
+
+        // shader
+        GameObject shaderItem = new GameObject("shader");
+        shaderItem.transform.parent = newFloor.transform;
+        shaderItem.transform.position = transform.position;
+        shaderItem.transform.localScale = new Vector3(1f,1f,1f);
+        shaderItem.AddComponent<SpriteRenderer>().sprite = floorItem.shaderTexture;
+        shaderItem.GetComponent<SpriteRenderer>().sortingOrder = 2; // dumb
+
+
         // these fd lines are dumb
         FloorHandler tempFD = newFloor.AddComponent<FloorHandler>();
         tempFD.level = floorItem.level;
@@ -85,8 +96,25 @@ public class BuildingLogic : MonoBehaviour
         floors.Add(floorItem);
         newFloor.transform.SetParent(transform);
 
-        if(floorItem.floorType == FloorType.Lobby){return;}
-        GameObject lvi = Instantiate(LevelUpItem,newFloor.transform.position,newFloor.transform.rotation,newFloor.transform);
+        // BORDER / LEVELUP
+        GameObject border = null;
+
+        switch (floorItem.floorType)
+        {
+            case FloorType.Lobby:
+                border = Instantiate(TitleBorder,newFloor.transform.position,newFloor.transform.rotation,newFloor.transform);
+                break;
+
+            case FloorType.Bedroom:
+                border = Instantiate(StarBorder,newFloor.transform.position,newFloor.transform.rotation,newFloor.transform);
+                break;
+
+            default:
+                Debug.LogError($"Type of {floorItem.floorType} is not set! Go to Building Logic to fix.");
+                break;
+        }
+        border.GetComponent<LevelUpHandler>().floorName.text = floorItem.floorType.ToString();
+        
     }
 
     void UpgradeFloor(int floorNumber){

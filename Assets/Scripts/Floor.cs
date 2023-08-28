@@ -9,6 +9,7 @@ public class Floor : ScriptableObject {
     public FloorType floorType;
     public int level;
     public Sprite floorTexture;
+    public Sprite shaderTexture;
 }
 }
 
