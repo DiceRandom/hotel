@@ -1,0 +1,13 @@
+{
+    "MONEY": "373",
+    "floors": {
+        "0":{
+            "level":"0",
+            "type" : "Lobby"
+        },
+        "1":{
+            "level":"1",
+            "type" : "Bedroom"
+        }
+    }
+}

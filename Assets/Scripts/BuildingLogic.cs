@@ -22,20 +22,20 @@ public class BuildingLogic : MonoBehaviour
     
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // create lobby
 
-        CreateFloor(lobbyPrefab);
+        CreateFloor(lobbyPrefab,0);
         
-            CreateFloor(roomPrefab);
+        CreateFloor(roomPrefab,0);
     }
 
     // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.K)){
-            CreateFloor(roomPrefab);
+            CreateFloor(roomPrefab,0);
         }
 
         // if(Input.GetKeyDown(KeyCode.R)){
@@ -50,13 +50,13 @@ public class BuildingLogic : MonoBehaviour
 
     public void CreateNewFloor(int price){
         if(debug){
-            CreateFloor(roomPrefab);
+            CreateFloor(roomPrefab,0);
             Debug.Log("Debug Floor");
             return;
         }   
         if(GetComponent<MoneyLogic>().money >= price){
             GetComponent<MoneyLogic>().money -= price;
-            CreateFloor(roomPrefab);
+            CreateFloor(roomPrefab,0);
         }else{
             Debug.LogError("BROKE AF");
         }
@@ -65,7 +65,7 @@ public class BuildingLogic : MonoBehaviour
 
 
 
-    void CreateFloor(Floor floorItem){
+    public void CreateFloor(Floor floorItem, int level){
 
         // Create
         GameObject newFloor = new GameObject(floorItem.floorType.ToString());
@@ -87,9 +87,9 @@ public class BuildingLogic : MonoBehaviour
 
         // these fd lines are dumb
         FloorHandler tempFD = newFloor.AddComponent<FloorHandler>();
-        tempFD.level = floorItem.level;
+        tempFD.level = level;
+        tempFD.type = floorItem.floorType;
         FDs.Add(tempFD);
-
 
         //  now all the floor stuff
         newFloor.transform.position += new Vector3(0,floors.Count() * size,0); //  this is so fucking dumb
@@ -115,10 +115,25 @@ public class BuildingLogic : MonoBehaviour
         }
         border.GetComponent<LevelUpHandler>().floorName.text = floorItem.floorType.ToString();
         
+        // tempFD.UpdateStars();
+        border.GetComponent<LevelUpHandler>().UpdateStars(); // handle loading
     }
 
     void UpgradeFloor(int floorNumber){
         FDs[floorNumber].level++;
+    }
+
+    public void ClearFloors(){
+        // CLEARS ALL FLOORS
+        // floors
+        // FDs
+        // and children
+        
+        floors.Clear();
+        FDs.Clear();
+        foreach (Transform child in transform) {
+            GameObject.Destroy(child.gameObject);
+        }
     }
 
 

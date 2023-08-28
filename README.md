@@ -6,6 +6,6 @@
 - [ ] update money generation
 - [X] update floor visuals
 - [ ] multiple floor types
-- [ ] saves (remember data)
+- [X] saves (remember data)
 
 
