@@ -41,7 +41,7 @@ public class Save : MonoBehaviour
         
         autoSave.gameObject.SetActive(false);
         InvokeRepeating("AutoSave", 30f, 60f); // after 30 seconds start, every min
-        // AutoSave();
+        Application.targetFrameRate = 60; // fix fps lock
     }
 
     // Update is called once per frame
