@@ -194,7 +194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6970048947319092701, guid: 4586816a51e209e47ba063e4c76cc812, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6970048947319092703, guid: 4586816a51e209e47ba063e4c76cc812, type: 3}
       propertyPath: floorName

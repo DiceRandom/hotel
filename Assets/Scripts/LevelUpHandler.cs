@@ -8,6 +8,8 @@ using System;
 public class LevelUpHandler : MonoBehaviour
 {
     FloorHandler fd;
+    public GameObject starParticle;
+    public Transform levelUpButton;
     // public TextMeshProUGUI levelText;
 
     public Selectable[] stars;
@@ -32,7 +34,7 @@ public class LevelUpHandler : MonoBehaviour
         }
         if(fd.level >= 2){
             stars[2].interactable = true; // max
-            transform.GetChild(0).GetComponent<Button>().interactable = false;
+            levelUpButton.GetComponent<Button>().interactable = false;
         }
     }
 
@@ -41,8 +43,11 @@ public class LevelUpHandler : MonoBehaviour
         fd.level++;
         stars[fd.level].interactable = true;
         // levelText.text = "Level "+(fd.level+1);
+        GameObject starP = Instantiate(starParticle, levelUpButton.position, transform.rotation,transform);
+        Destroy(starP, 3f);
         if(fd.level == 2){
-            transform.GetChild(0).GetComponent<Button>().interactable = false;
+           levelUpButton.GetComponent<Button>().interactable = false;
         }
+        
     }
 }
