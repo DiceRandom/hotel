@@ -2,7 +2,7 @@
 
 
 # TODO
-- [ ] update upgrade stucture
+- [X] update upgrade stucture
 - [ ] update money generation
 - [X] update floor visuals
 - [ ] multiple floor types
