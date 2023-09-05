@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Dice Acosta
-  productName: PixelHotel
+  productName: Pixel Hotel
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -201,11 +201,11 @@ PlayerSettings:
   tvOSTopShelfImageWideLayers: []
   tvOSTopShelfImageWideLayers2x: []
   iOSLaunchScreenType: 1
-  iOSLaunchScreenPortrait: {fileID: 2800000, guid: 395f6b9556f14704790df6035be6ee3a, type: 3}
-  iOSLaunchScreenLandscape: {fileID: 2800000, guid: dac4416225e885444b6746b1423e64dd, type: 3}
+  iOSLaunchScreenPortrait: {fileID: 2800000, guid: 5dbd2bb6c46438f45b4c902216efb8f3, type: 3}
+  iOSLaunchScreenLandscape: {fileID: 2800000, guid: 187e85e3d76fc2848a291059c3ae88d9, type: 3}
   iOSLaunchScreenBackgroundColor:
     serializedVersion: 2
-    rgba: 4283046417
+    rgba: 4290204191
   iOSLaunchScreenFillPct: 100
   iOSLaunchScreenSize: 100
   iOSLaunchScreenCustomXibPath: 

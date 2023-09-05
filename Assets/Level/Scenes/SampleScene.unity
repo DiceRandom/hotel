@@ -499,6 +499,8 @@ MonoBehaviour:
   floors: []
   FDs: []
   debug: 0
+  floorMultiplier: 1.2026
+  basePrice: 50
 --- !u!212 &179415803
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3749,7 +3751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1017633127
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3962,7 +3964,7 @@ GameObject:
   - component: {fileID: 1064448704}
   - component: {fileID: 1064448703}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: FloorText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4442,7 +4444,7 @@ GameObject:
   - component: {fileID: 1117741594}
   - component: {fileID: 1117741593}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: BNF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4517,7 +4519,7 @@ MonoBehaviour:
       - m_Target: {fileID: 179415802}
         m_TargetAssemblyTypeName: BuildingLogic, Assembly-CSharp
         m_MethodName: CreateNewFloor
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5318,6 +5320,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   loadTime: 1
   currrentTime: 0
+  floorPrice: {fileID: 1064448703}
 --- !u!1 &1430321855
 GameObject:
   m_ObjectHideFlags: 0

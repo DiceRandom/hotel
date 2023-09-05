@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
+using TMPro;
 
 public class LowerMenu : MonoBehaviour
 {
@@ -11,12 +12,17 @@ public class LowerMenu : MonoBehaviour
     public float loadTime;
     public float currrentTime;
 
+    public TextMeshProUGUI floorPrice;
+
     bool isMenuOpen = false;
 
+    BuildingLogic bl;
+
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
+        bl = FindObjectOfType<BuildingLogic>();
         
+        UpdateBuyText();
     }
 
     private void Update() {
@@ -37,6 +43,9 @@ public class LowerMenu : MonoBehaviour
     }
 
     public async void Load(){
+        
+        UpdateBuyText();
+        
         float newY = loadCurve.Evaluate(0);
         currrentTime = 0;
 
@@ -47,6 +56,8 @@ public class LowerMenu : MonoBehaviour
             transform.position = new Vector3(transform.position.x, newY ,transform.position.z);
             await Task.Yield();
         }
+
+
     }
 
     public async void Close(){
@@ -61,4 +72,9 @@ public class LowerMenu : MonoBehaviour
             await Task.Yield();
         }
     }
+
+    public void UpdateBuyText(){
+        floorPrice.text = ("-" + bl.GetPrice().ToString());
+    }
+
 }

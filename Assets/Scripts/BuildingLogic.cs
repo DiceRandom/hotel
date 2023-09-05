@@ -18,7 +18,13 @@ public class BuildingLogic : MonoBehaviour
     
     public List<FloorHandler> FDs = new List<FloorHandler>();
 
+
     public bool debug = true;
+    
+    public float floorMultiplier = 1.2026f;
+    public int basePrice = 50;
+
+    private LowerMenu lm;
     
 
     // Start is called before the first frame update
@@ -29,6 +35,9 @@ public class BuildingLogic : MonoBehaviour
         CreateFloor(lobbyPrefab,0);
         
         CreateFloor(roomPrefab,0);
+
+
+        lm = FindObjectOfType<LowerMenu>();
     }
 
     // Update is called once per frame
@@ -48,7 +57,8 @@ public class BuildingLogic : MonoBehaviour
     }
 
 
-    public void CreateNewFloor(int price){
+    public void CreateNewFloor(){
+        int price = GetPrice();
         if(debug){
             CreateFloor(roomPrefab,0);
             Debug.Log("Debug Floor");
@@ -61,6 +71,30 @@ public class BuildingLogic : MonoBehaviour
             Debug.LogError("BROKE AF");
         }
         GetComponent<MoneyLogic>().UpdateUI();
+
+        lm.UpdateBuyText();
+    }
+
+    public int GetPrice(){
+        //  price = (1*(mult)^(floornumber))
+
+        // floor start 2 tech
+        int realFloorCount = floors.Count-2;
+
+
+        if(realFloorCount <= 20 && realFloorCount >= 0){
+            float finalMP = (Mathf.Pow(1*floorMultiplier, (floors.Count-2)));
+            // DebugPlus.LogOnScreen(realFloorCount.ToString())
+            //     .Color(Color.green)
+            //     .Duration(2);
+            int final = (int)(basePrice * finalMP);
+            if(final > 2000){
+                final = 2000;
+            }
+            return final;
+        }
+        
+        return 2000;
     }
 
 
